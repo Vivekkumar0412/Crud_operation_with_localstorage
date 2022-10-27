@@ -5,8 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud Operations in js</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }fieldset{
+            margin: 30px 30px;
+        }
+    </style>
 </head>
 <body>
-    
+    <fieldset>
+        <legend><h1>Form</h1></legend>
+    <form id="form">
+        <input type="text" id="Name" name="Name" placeholder="Name"><br><br>
+        <input type="text" id="job" name="job" placeholder="job"><br><br>
+        <input type="text" id="exp" name="exp" placeholder="exp"><br><br>
+        <input type="button" value="Submit" id="btn" onclick="subbmit()">
+        <input type="reset" value="reset" id="btn">
+        
+    </form>
+    </fieldset>
+    <br>
+    <br>
+    <br>
+    <div id="msg"></div>
+    <fieldset>
+        <legend><h2>Data from the local storage</h2></legend>
+        <table border="2" id="tabel">
+            <tr>
+                <td class="col">Name</td>
+                <td class="col">Job</td>
+                <td class="col">Experiance</td>
+            </tr>
+        </table>
+    </fieldset>
+
+
+
+
+
+
+
+
+    <script>
+        function subbmit(){
+            let dataEntered = retriveData();
+            let readData = readingDatafromlocalstorage(dataEntered);
+            insert(readData);
+            // console.log(dataEntered)
+            // console.log(readData);
+        }
+
+        function retriveData(){
+            let name1 = document.getElementById("Name").value;
+            let job = document.getElementById("job").value;
+            let exp = document.getElementById("exp").value;
+
+            let dataArr = [name1,job,exp];
+            return dataArr;
+        }
+
+        function readingDatafromlocalstorage(dataEntered){
+            let n = localStorage.setItem("Name",dataEntered[0]);
+            let j = localStorage.setItem("Job",dataEntered[1]);
+            let e = localStorage.setItem("Exp",dataEntered[2]);
+
+            let n1 = localStorage.getItem("Name",n);
+            let j1 = localStorage.getItem("Job",j);
+            let e1 = localStorage.getItem("Exp",e);
+
+            let arr2 = [n1,j1,e1];
+
+            return arr2;
+        }
+
+        function insert(){
+
+        }
+    </script>
 </body>
 </html>
